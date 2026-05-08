@@ -1,5 +1,13 @@
 {
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
-  ]
+  ],
+  "functions": {
+    "api/analyze-match.js": {
+      "maxDuration": 60
+    },
+    "api/analyze.js": {
+      "maxDuration": 30
+    }
+  }
 }
