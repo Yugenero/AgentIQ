@@ -1,0 +1,129 @@
+.rr-trendline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  width: 260px;
+  min-width: 180px;
+  max-width: 480px;
+  resize: horizontal;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.rr-trendline__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.rr-trendline__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rr-trendline__total {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.rr-trendline__chart {
+  flex: 1;
+  position: relative;
+  min-height: 140px;
+  cursor: crosshair;
+}
+
+.rr-trendline__svg {
+  display: block;
+}
+
+/* Grid axis labels */
+.rr-trendline__grid-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  fill: var(--muted);
+  opacity: 0.6;
+}
+
+/* Tooltip — card in top-center of chart */
+.rr-trendline__tooltip {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+  z-index: 2;
+  min-width: 110px;
+}
+
+.rr-trendline__tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rr-trendline__tooltip-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  margin-bottom: 1px;
+}
+
+.rr-trendline__tooltip-map {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.rr-trendline__tooltip-result--win  { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--win); font-weight: 700; }
+.rr-trendline__tooltip-result--loss { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--accent); font-weight: 700; }
+
+.rr-trendline__tooltip-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.rr-trendline__tooltip-rr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.rr-trendline__tooltip-cum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.rr-trendline__tooltip-factor {
+  border-top: 1px solid var(--border);
+  padding-top: 4px;
+  margin-top: 1px;
+}
+
+.rr-trendline__tooltip-factor span:last-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+}

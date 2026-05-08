@@ -1,0 +1,127 @@
+.role-radar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 18px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.role-radar__header {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.role-radar__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.role-radar__badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.role-radar__badge--duelist    { color: #e53935; background: rgba(229,57,53,0.12); }
+.role-radar__badge--initiator  { color: #1e88e5; background: rgba(30,136,229,0.12); }
+.role-radar__badge--controller { color: #8e24aa; background: rgba(142,36,170,0.12); }
+.role-radar__badge--sentinel   { color: #43a047; background: rgba(67,160,71,0.12); }
+
+.role-radar__svg {
+  overflow: visible;
+}
+
+/* Grid */
+.role-radar__grid {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1;
+  opacity: 0.6;
+}
+
+.role-radar__grid--outer {
+  opacity: 1;
+}
+
+/* Spokes */
+.role-radar__spoke {
+  stroke: var(--border);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+/* Benchmark polygon */
+.role-radar__benchmark {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+  opacity: 0.5;
+}
+
+/* Actual polygon */
+.role-radar__actual {
+  fill: var(--accent);
+  fill-opacity: 0.15;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+/* Dots on actual polygon vertices */
+.role-radar__dot {
+  fill: var(--accent);
+  stroke: var(--bg);
+  stroke-width: 1.5;
+}
+
+/* Axis labels */
+.role-radar__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  fill: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* Legend */
+.role-radar__legend {
+  display: flex;
+  gap: 16px;
+}
+
+.role-radar__legend-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.role-radar__legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+}
+
+.role-radar__legend-item--actual::before {
+  background: var(--accent);
+}
+
+.role-radar__legend-item--benchmark::before {
+  background: var(--muted);
+  opacity: 0.5;
+}

@@ -1,0 +1,151 @@
+.economy-flow {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.economy-flow__header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.economy-flow__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.economy-flow__sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* ── Win-rate bars ── */
+.economy-flow__rates {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.economy-flow__rate-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 72px;
+  align-items: center;
+  gap: 10px;
+}
+
+.economy-flow__buy-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 0;
+}
+
+.economy-flow__buy-badge--pistol { color: var(--muted); }
+.economy-flow__buy-badge--eco    { color: #e53935; }
+.economy-flow__buy-badge--force  { color: #f9a825; }
+.economy-flow__buy-badge--full   { color: #43a047; }
+
+.economy-flow__bar-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.economy-flow__bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.economy-flow__bar-fill--pistol { background: var(--muted); }
+.economy-flow__bar-fill--eco    { background: #e53935; }
+.economy-flow__bar-fill--force  { background: #f9a825; }
+.economy-flow__bar-fill--full   { background: #43a047; }
+
+.economy-flow__rate-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--fg);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.economy-flow__rate-count {
+  font-size: 0.58rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* ── Round timeline ── */
+.economy-flow__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.economy-flow__timeline-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.economy-flow__rounds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.economy-flow__round {
+  width: 22px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 2px;
+  cursor: default;
+  position: relative;
+  opacity: 0.85;
+  transition: opacity 0.1s ease;
+}
+
+.economy-flow__round:hover { opacity: 1; }
+
+.economy-flow__round--pistol { background: rgba(128,128,128,0.15); }
+.economy-flow__round--eco    { background: rgba(229,57,53,0.18); }
+.economy-flow__round--force  { background: rgba(249,168,37,0.18); }
+.economy-flow__round--full   { background: rgba(67,160,71,0.18); }
+
+.economy-flow__round--win  { border-bottom: 2px solid #43a047; }
+.economy-flow__round--loss { border-bottom: 2px solid #e53935; }
+
+.economy-flow__round-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.economy-flow__round-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.economy-flow__round-dot--win  { background: #43a047; }
+.economy-flow__round-dot--loss { background: #e53935; }

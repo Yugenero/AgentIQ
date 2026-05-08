@@ -1,0 +1,74 @@
+.rank-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rank-card__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.rank-card__tier {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1;
+}
+
+.rank-card__rr-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.rank-card__rr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.rank-card__change {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.rank-card__change--up {
+  color: var(--accent);
+}
+
+.rank-card__change--down {
+  color: var(--muted);
+}
+
+.rank-card__bar-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.rank-card__bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 0;
+  transition: width 0.4s ease;
+}
+
+.rank-card__peak {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
