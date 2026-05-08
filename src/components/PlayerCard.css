@@ -1,0 +1,119 @@
+.player-card {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 4px 2px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.player-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.player-card__name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.player-card__tag {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-left: 1px;
+}
+
+.player-card__level {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+.player-card__right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.player-card__rank-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.player-card__rank-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.player-card__rank-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.player-card__rank-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.player-card__rank-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.player-card__rr {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+.player-card__leaderboard {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+.player-card__peak-season {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+
+.player-card__sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .player-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .player-card__right { gap: 20px; }
+}

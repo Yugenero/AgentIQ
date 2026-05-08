@@ -1,0 +1,344 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 0 40px;
+}
+
+.profile-page__back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  align-self: flex-start;
+  transition: color 0.15s ease;
+}
+
+.profile-page__back:hover {
+  color: var(--fg);
+}
+
+.profile-page__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-page__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-page__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-page__name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+.profile-page__joined {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.profile-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.profile-page__section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.profile-page__riot-linked {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.profile-page__riot-id {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.profile-page__riot-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+.profile-page__riot-tag {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.profile-page__riot-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.profile-page__riot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.profile-page__riot-empty-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.profile-page__link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.profile-page__link-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.profile-page__input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.profile-page__input:focus {
+  border-color: var(--accent);
+}
+
+.profile-page__input::placeholder {
+  color: var(--muted);
+}
+
+.profile-page__btn {
+  padding: 8px 16px;
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.profile-page__btn--primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.profile-page__btn--primary:hover { opacity: 0.88; }
+.profile-page__btn--primary:disabled { opacity: 0.5; }
+
+.profile-page__btn--ghost {
+  background: var(--border);
+  color: var(--fg);
+}
+
+.profile-page__btn--ghost:hover { opacity: 0.75; }
+
+.profile-page__error {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--accent);
+}
+
+/* ── Friends ── */
+.profile-page__friends {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.profile-page__friend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  min-height: 52px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--win);
+  background: var(--win-subtle);
+  gap: 12px;
+}
+
+.profile-page__friend-id {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+}
+
+.profile-page__mutual-star {
+  color: var(--win);
+  font-size: 0.6rem;
+  margin-right: 5px;
+  opacity: 0.75;
+  align-self: center;
+}
+
+.profile-page__friend-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--win);
+  letter-spacing: -0.01em;
+}
+
+.profile-page__friend-tag {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--win);
+  opacity: 0.55;
+}
+
+.profile-page__friend-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.profile-page__friend-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--win);
+  background: none;
+  border: 1px solid var(--win);
+  border-radius: 0;
+  padding: 4px 10px;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+
+.profile-page__friend-btn:hover { opacity: 1; }
+
+.profile-page__friend-btn--remove {
+  border-color: transparent;
+  color: var(--muted);
+  font-size: 1rem;
+  padding: 2px 6px;
+}
+
+.profile-page__friend-btn--remove:hover { color: var(--accent); opacity: 1; }
+
+.profile-page__confirm-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  margin-right: 2px;
+}
+
+.profile-page__friend-btn--confirm-yes {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.profile-page__friend-btn--confirm-yes:hover { background: var(--accent); color: #fff; opacity: 1; }
+
+.profile-page__friend-btn--confirm-no {
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.profile-page__friend-btn--confirm-no:hover { opacity: 1; color: var(--fg); }
+
+.profile-page__friend-form {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.profile-page__input--friend {
+  width: 100%;
+  max-width: 300px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.profile-page__btn--friend {
+  background: var(--win);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+
+.profile-page__btn--friend:hover { opacity: 0.85; }
+.profile-page__btn--friend:disabled { opacity: 0.5; }
+
+.profile-page__section--bottom {
+  margin-top: auto;
+}
+
+.profile-page__signout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.profile-page__signout:hover {
+  color: var(--accent);
+}

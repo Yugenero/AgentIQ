@@ -1,0 +1,57 @@
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-card__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.stat-card__value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1;
+}
+
+.stat-card__unit {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 2px;
+  color: var(--muted);
+}
+
+.stat-card__delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.stat-card__delta--up {
+  color: var(--accent);
+}
+
+.stat-card__delta--down {
+  color: var(--muted);
+}
+
+.stat-card--skeleton .stat-card__value {
+  height: 2rem;
+  width: 70%;
+  border-radius: 0;
+}
+
+.stat-card--skeleton .stat-card__label {
+  height: 0.7rem;
+  width: 50%;
+  border-radius: 0;
+}
