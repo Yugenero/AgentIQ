@@ -222,15 +222,20 @@ export default async function handler(req, res) {
 
     const payload = { target_puuid: targetPuuid ?? null, data: trimMatchPayload(matchData) };
 
-    const response = await openai.responses.create({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4.1-mini',
-      instructions: SYSTEM_PROMPT,
-      input: JSON.stringify(payload),
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: JSON.stringify(payload) },
+      ],
       temperature: 0.1,
-      text: { format: { type: 'json_schema', name: 'match_analysis', strict: true, schema: SCHEMA } },
+      response_format: {
+        type: 'json_schema',
+        json_schema: { name: 'match_analysis', strict: true, schema: SCHEMA },
+      },
     });
 
-    res.json(JSON.parse(response.output_text));
+    res.json(JSON.parse(response.choices[0].message.content));
   } catch (err) {
     console.error('analyze-match error:', err);
     res.status(500).json({ error: err.message });

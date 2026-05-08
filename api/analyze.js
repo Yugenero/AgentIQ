@@ -56,15 +56,20 @@ export default async function handler(req, res) {
     const { aiPayload } = req.body;
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-    const response = await openai.responses.create({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
-      instructions: SYSTEM_PROMPT,
-      input: `<player_stats>${JSON.stringify(aiPayload, null, 2)}</player_stats>\nProduce the analysis now.`,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: `<player_stats>${JSON.stringify(aiPayload, null, 2)}</player_stats>\nProduce the analysis now.` },
+      ],
       temperature: 0.2,
-      text: { format: { type: 'json_schema', name: 'analysis', strict: true, schema: SCHEMA } },
+      response_format: {
+        type: 'json_schema',
+        json_schema: { name: 'analysis', strict: true, schema: SCHEMA },
+      },
     });
 
-    res.json(JSON.parse(response.output_text));
+    res.json(JSON.parse(response.choices[0].message.content));
   } catch (err) {
     console.error('analyze error:', err);
     res.status(500).json({ error: err.message });
