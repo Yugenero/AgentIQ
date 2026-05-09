@@ -1,100 +1,109 @@
 # AgentIQ — Valorant Performance Analytics
 
-A private friend-group Valorant analytics dashboard. Enter a Riot ID to pull competitive match history, rank, and stats, then get an AI-generated performance breakdown grounded in your actual numbers.
+> **Live app → [agent-iq-alpha.vercel.app](https://agent-iq-alpha.vercel.app/)**
+
+A Valorant analytics dashboard built for a friend group. Enter any Riot ID to pull competitive match history, rank, and stats — then get a deterministic AI coaching breakdown grounded in your actual round data.
+
+---
+
+## Screenshots
+
+### Landing
+![AgentIQ landing page](docs/screenshot-landing.png)
+
+### Dashboard
+![AgentIQ dashboard](docs/screenshot-dashboard.png)
+
+### Match Analysis (VAL-COACH-D2A)
+![AgentIQ AI match analysis](docs/screenshot-analysis.png)
+
+---
+
+## Features
+
+- **Player search** — look up any Riot ID, click any scoreboard row to load that player
+- **Match history** — last 20 competitive games with KDA, ACS, HS%, RR delta, map, agent
+- **Rank tracking** — current rank with RR trendline across recent matches
+- **KPI cards** — K/D, ACS, HS%, Win Rate, ADR aggregated over recent games
+- **Economy Flow** — win rates by buy type (pistol / eco / force / full) + round timeline
+- **Role Fulfillment radar** — spider chart benchmarking your stats against role baselines (duelist / initiator / controller / sentinel)
+- **Agent breakdown** — per-agent win rate, K/D, ACS across all tracked games
+- **AI match analysis (VAL-COACH-D2A)** — deterministic GPT-4.1-mini coaching grounded in round-level economy, trade rates, opening duels, post-plant, and utility — no vague advice
+- **Dark / light theme**
+- **Firebase auth** — sign in to save your tracked player
 
 ---
 
 ## Prerequisites
 
-- Node.js 18+ (tested on Node 23 via Homebrew)
+- Node.js 18+ 
 - npm 9+
-- A HenrikDev API key — register at their Discord (Basic tier is free, 30 req/min)
-- An Anthropic API key — get one at console.anthropic.com
+- A [HenrikDev API key](https://docs.henrikdev.xyz/) — free tier, 30 req/min
+- An [OpenAI API key](https://platform.openai.com/api-keys)
+- A Firebase project (for auth + Firestore)
 
 ---
 
-## Setup
+## Local setup
 
-### 1. Clone the repo
+### 1. Clone
 
 ```bash
-git clone <your-repo-url>
-cd agentiq
+git clone https://github.com/Yugenero/AgentIQ.git
+cd AgentIQ
 ```
 
-### 2. Install dependencies
+### 2. Install
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 3. Environment variables
 
-Create a `.env.local` file in the project root:
+Create `.env.local` in the project root:
 
 ```env
 VITE_HENRIK_API_KEY=HDEV-your-key-here
-VITE_ANTHROPIC_API_KEY=sk-ant-your-key-here
+VITE_OPENAI_API_KEY=sk-proj-your-key-here
 ```
 
-| Variable | Description |
+| Variable | Where to get it |
 |---|---|
-| `VITE_HENRIK_API_KEY` | HenrikDev Valorant API key. Fetches player stats, rank, and match history. |
-| `VITE_ANTHROPIC_API_KEY` | Anthropic API key. Generates AI performance analysis via Claude. |
+| `VITE_HENRIK_API_KEY` | [HenrikDev Discord](https://docs.henrikdev.xyz/) — Basic tier is free |
+| `VITE_OPENAI_API_KEY` | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) |
 
-> **Security note:** These keys are inlined into the browser bundle at build time and are visible in DevTools. This is acceptable for a private friend-group tool. Set a spending limit on your Anthropic console as a safety net. Never commit `.env.local` to git — it is already in `.gitignore`.
+> **Note:** `VITE_HENRIK_API_KEY` is used client-side. `VITE_OPENAI_API_KEY` is read by the serverless functions and never exposed in the browser bundle.
 
----
-
-## Running locally
+### 4. Run
 
 ```bash
-npm run dev
+./dev.sh
+# or: npm run dev
 ```
 
-Opens at http://localhost:5173. Enter any Riot ID in `name#TAG` format (e.g. `TenZ#SEN`) to load a player's profile.
+Opens at http://localhost:5173.
 
 ---
 
 ## Deploy to Vercel
 
-### 1. Push to GitHub
+### 1. Push to GitHub, import to Vercel
 
-```bash
-git add .
-git commit -m "initial build"
-git push origin main
-```
+1. Push the repo to GitHub.
+2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import the repo.
+3. Vercel auto-detects Vite. Keep all defaults and click **Deploy**.
 
-### 2. Import to Vercel
+### 2. Add environment variables
 
-1. Go to vercel.com and sign in.
-2. Click **Add New Project** and import your GitHub repository.
-3. Vercel auto-detects Vite. Keep the defaults:
-   - Framework: **Vite**
-   - Build command: `npm run build`
-   - Output directory: `dist`
-4. Click **Deploy**.
+**Project → Settings → Environment Variables:**
 
-### 3. Add environment variables
+| Name | Value |
+|---|---|
+| `VITE_HENRIK_API_KEY` | Your HenrikDev key |
+| `VITE_OPENAI_API_KEY` | Your OpenAI key |
 
-After the first deploy:
-
-1. Project → **Settings** → **Environment Variables**.
-2. Add `VITE_HENRIK_API_KEY` and `VITE_ANTHROPIC_API_KEY` with your values.
-3. Redeploy: **Deployments** → latest → **Redeploy**.
-
----
-
-## Custom domain (Vercel)
-
-1. Buy a domain from Namecheap, Cloudflare Registrar, or directly through Vercel.
-2. Project → **Settings** → **Domains** → **Add** → enter your domain.
-3. Add the DNS records Vercel shows at your registrar:
-   - **Apex (`yourdomain.com`):** A record `@ → 76.76.21.21`
-   - **www:** CNAME `www → cname.vercel-dns-0.com`
-   - Or: change nameservers to `ns1.vercel-dns.com` / `ns2.vercel-dns.com` to let Vercel manage DNS.
-4. SSL provisions automatically within minutes of DNS propagation.
+Then **Deployments → Redeploy** to apply them.
 
 ---
 
@@ -102,13 +111,14 @@ After the first deploy:
 
 | Layer | Choice |
 |---|---|
-| Bundler | Vite 6 |
+| Bundler | Vite 8 |
 | UI | React 19 |
 | State | Zustand |
 | Styling | Plain CSS with custom properties |
-| Stats API | HenrikDev Valorant API (unofficial, browser-direct) |
-| AI | Claude claude-sonnet-4-5 via tool_use |
-| Fonts | Inter + JetBrains Mono (Google Fonts) |
+| Stats API | HenrikDev Valorant API v4 |
+| AI | OpenAI `gpt-4.1-mini` + `gpt-4o-mini` via Vercel serverless functions |
+| Auth / DB | Firebase Auth + Firestore |
+| Fonts | Inter + JetBrains Mono |
 | Deploy | Vercel |
 
 ---
@@ -116,6 +126,6 @@ After the first deploy:
 ## Caveats
 
 - **HenrikDev is unofficial.** Riot could ask for it to be taken down. Acceptable risk for a private tool.
-- **API keys are exposed in the browser bundle.** Set spending limits on both dashboards.
-- **Match data is cached in localStorage for 5 minutes** per player to stay within rate limits.
-- **Around Valorant patch days**, HenrikDev may return 503s for a few hours. The app surfaces a clean error message.
+- **OpenAI calls run server-side** via Vercel serverless functions — the API key is never in the browser bundle.
+- **Match analysis uses `gpt-4.1-mini`** (1M token context) to handle full Henrik V4 round payloads.
+- **Around Valorant patch days**, HenrikDev may return 503s for a few hours.
