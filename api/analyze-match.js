@@ -218,7 +218,7 @@ export default async function handler(req, res) {
 
   try {
     const { matchData, targetPuuid } = req.body;
-    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || process.env.VITE_OPENAI_API_KEY });
 
     const payload = { target_puuid: targetPuuid ?? null, data: trimMatchPayload(matchData) };
 
