@@ -160,31 +160,29 @@ export default function App() {
       {error && <p className="app-error app-error--inline">{error}</p>}
       <div className="dashboard stagger">
         <PlayerCard player={player} rank={rank} />
-        <div className="panel-row">
-          <div className="panel">
-            <div className="panel__header">
-              <span className="panel__title">Last {lastMatches.length} Competitive Games</span>
-              <div className="panel__meta">
-                {season && <span className="panel__badge">{season}</span>}
-                <span className="panel__badge">{career.wins}W {career.games - career.wins}L · {Number(career.winrate).toFixed(0)}% WR</span>
-              </div>
+        <div className="panel">
+          <div className="panel__header">
+            <span className="panel__title">Last {lastMatches.length} Competitive Games</span>
+            <div className="panel__meta">
+              {season && <span className="panel__badge">{season}</span>}
+              <span className="panel__badge">{career.wins}W {career.games - career.wins}L · {Number(career.winrate).toFixed(0)}% WR</span>
             </div>
-            <div className="match-list-header">
-              <span>#</span><span>Map</span><span>Agent</span>
-              <span>Result</span><span>KDA</span><span>ACS</span>
-              <span>HS%</span><span>RR</span><span>When</span><span>AI</span>
-            </div>
-            {lastMatches.length === 0 ? (
-              <p className="panel__empty">No competitive matches found.</p>
-            ) : (
-              lastMatches.map((m, i) => (
-                <MatchCard key={i} match={m} playerMeta={{ ...player, puuid: snapshot.player?.puuid }} index={i} />
-              ))
-            )}
           </div>
-          <RRTrendline matches={lastMatches} />
+          <div className="match-list-header">
+            <span>#</span><span>Map</span><span>Agent</span>
+            <span>Result</span><span>KDA</span><span>ACS</span>
+            <span>HS%</span><span>RR</span><span>When</span><span>AI</span>
+          </div>
+          {lastMatches.length === 0 ? (
+            <p className="panel__empty">No competitive matches found.</p>
+          ) : (
+            lastMatches.map((m, i) => (
+              <MatchCard key={i} match={m} playerMeta={{ ...player, puuid: snapshot.player?.puuid }} index={i} />
+            ))
+          )}
         </div>
-        <div className="viz-pair">
+        <div className="viz-row">
+          <RRTrendline matches={lastMatches} />
           <EconomyFlow matches={lastMatches} puuid={snapshot.player?.puuid} />
           <RoleRadar   matches={lastMatches} puuid={snapshot.player?.puuid} />
         </div>
