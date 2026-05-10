@@ -26,3 +26,6 @@ dist-ssr
 # Claude Code
 .claude/
 app/
+
+# Large fixture / sample data
+agent-context/example_user_response_object.md
