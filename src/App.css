@@ -455,6 +455,9 @@
   .match-list-header { display: none; }
   .kpi-row { grid-template-columns: repeat(2, 1fr); }
   .app__player-id { padding-right: 0; width: 100%; margin-left: 0; }
+  .viz-row { grid-template-columns: 1fr; }
+  .viz-row > * { width: 100%; max-width: 100%; min-width: 0; }
+  .viz-row .rr-trendline { width: 100%; max-width: 100%; min-width: 0; resize: none; }
 }
 
 @media (max-width: 480px) {
